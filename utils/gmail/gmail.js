@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer')
 
 class Gmail {
   constructor (options) {
+    // TODO: Extend Email class
     this.smtpTransport = nodemailer.createTransport({
       host: options.host || 'smtp.gmail.com',
       port: options.port || 587,

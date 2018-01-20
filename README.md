@@ -7,8 +7,9 @@ Method: **POST**
 Path: **/send**   
 Body: **{ "templateId": "x", "data": { } }** 
 
-### Strategy
+### Strategies
 - [x] Gmail
+- [ ] email
 - [ ] Messenger
 - [ ] GCM (Google Cloud Messaging)
 - [ ] APN (Apple Push Notification)
