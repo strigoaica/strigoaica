@@ -1,8 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const path = require('path')
 
 const config = require(`${__dirname}/config/config`)
-const Strigoaica = require(`${__dirname}/utils/strigoaica`)
+const Strigoaica = require(`${__dirname}/lib/strigoaica`)
 
 const port = process.env.PORT || 12987
 
@@ -39,7 +40,8 @@ app.listen(port, () => {
         auth: {
           user: config.gmail.user,
           pass: config.gmail.pass
-        }
+        },
+        templatesPath: path.join(__dirname, 'templates')
       }
     }
   ])
