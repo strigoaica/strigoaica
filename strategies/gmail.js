@@ -29,7 +29,7 @@ class Gmail {
     console.log('[gmail]', templateId, data)
 
     return new Promise((resolve, reject) => {
-      const template = require(`${this.templatesPath}/${templateId}`)(data.payload)
+      const template = require(`${this.templatesPath}/gmail/${templateId}`)(data.payload)
 
       this.smtpTransport.sendMail({
         from: data.from,
