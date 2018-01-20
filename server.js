@@ -40,8 +40,7 @@ app.listen(port, () => {
         auth: {
           user: config.gmail.user,
           pass: config.gmail.pass
-        },
-        templatesPath: path.join(__dirname, 'templates')
+        }
       }
     }
   ])
