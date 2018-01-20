@@ -12,6 +12,8 @@ class Gmail {
       requireTLS: options.requireTLS || true,
       auth: options.auth
     })
+
+    this.templatesPath = options.templatesPath
   }
 
   /**
@@ -27,7 +29,7 @@ class Gmail {
     console.log('[gmail]', templateId, data)
 
     return new Promise((resolve, reject) => {
-      const template = require(`${__dirname}/templates/${templateId}`)(data.payload)
+      const template = require(`${this.templatesPath}/gmail/${templateId}`)(data.payload)
 
       this.smtpTransport.sendMail({
         from: data.from,
