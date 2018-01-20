@@ -1,0 +1,20 @@
+{
+  "name": "strigoaica",
+  "version": "0.0.1",
+  "description": "Generic notifier",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:dev": "nodemon server.js"
+  },
+  "author": "Stefanos Chrs <stefanoschrs@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "nodemailer": "^4.4.1"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
+  }
+}
