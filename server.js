@@ -50,6 +50,12 @@ app.listen(port, () => {
           apiKey: config.sendgrid.apiKey
         }
       }
+    },
+    {
+      type: 'maildev',
+      options: {
+        port: 1025
+      }
     }
   ], {templatesPath: path.join(__dirname, 'templates')})
 })
