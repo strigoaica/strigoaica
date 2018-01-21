@@ -42,6 +42,14 @@ app.listen(port, () => {
           pass: config.gmail.pass
         }
       }
+    },
+    {
+      type: 'sendgrid',
+      options: {
+        auth: {
+          apiKey: config.sendgrid.apiKey
+        }
+      }
     }
-  ])
+  ], {templatesPath: path.join(__dirname, 'templates')})
 })
