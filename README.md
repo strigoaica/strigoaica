@@ -9,6 +9,8 @@ Body: **{ "templateId": "x", "data": { } }**
 
 ### Strategies
 - [x] Gmail
+- [x] Sengrid
+- [x] MailDev (email previewing)
 - [ ] email
 - [ ] Messenger
 - [ ] GCM (Google Cloud Messaging)
@@ -18,3 +20,7 @@ Body: **{ "templateId": "x", "data": { } }**
 Env Required:
 - Username **STRIGOAICA_GMAIL_USER**
 - Password **STRIGOAICA_GMAIL_PASS**
+
+### Sendgrid
+Env Required:
+- apiKey **STRIGOAICA_SENDGRID_KEY**

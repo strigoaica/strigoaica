@@ -40,9 +40,22 @@ app.listen(port, () => {
         auth: {
           user: config.gmail.user,
           pass: config.gmail.pass
-        },
-        templatesPath: path.join(__dirname, 'templates')
+        }
+      }
+    },
+    {
+      type: 'sendgrid',
+      options: {
+        auth: {
+          apiKey: config.sendgrid.apiKey
+        }
+      }
+    },
+    {
+      type: 'maildev',
+      options: {
+        port: 1025
       }
     }
-  ])
+  ], {templatesPath: path.join(__dirname, 'templates')})
 })

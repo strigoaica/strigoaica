@@ -6,15 +6,14 @@ const nodemailer = require('nodemailer')
 const extractor = require('../lib/utils/extractor')
 const embeddor = require('../lib/utils/embeddor')
 
-class Gmail {
+class MailDev {
   constructor (options) {
+    Object.assign(options, { port: 1025 })
     // TODO: Extend Email class
     this.smtpTransport = nodemailer.createTransport({
-      host: options.host || 'smtp.gmail.com',
-      port: options.port || 587,
-      secure: options.secure || false,
-      requireTLS: options.requireTLS || true,
-      auth: options.auth
+      host: options.host || 'localhost',
+      port: options.port || 1025,
+      ignoreTLS: options.ignoreTLS || true
     })
 
     this.templatesPath = options.templatesPath
@@ -30,7 +29,7 @@ class Gmail {
    * @returns {Promise<any>}
    */
   send (templateId, data) {
-    console.log('[gmail]', templateId, data)
+    console.log('[MailDev]', templateId, data)
 
     return new Promise((resolve, reject) => {
       const unprocessedTemplate = fs.readFileSync(`${this.templatesPath}/${templateId}.html`, {encoding:'utf-8'})
@@ -53,4 +52,4 @@ class Gmail {
   }
 }
 
-module.exports = Gmail
+module.exports = MailDev
