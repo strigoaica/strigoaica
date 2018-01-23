@@ -17,10 +17,20 @@ Body: **{ "templateId": "x", "data": { } }**
 - [ ] APN (Apple Push Notification)
 
 ### Gmail
+> [more info](https://support.google.com/accounts/answer/6010255)
+
 Env Required:
 - Username **STRIGOAICA_GMAIL_USER**
 - Password **STRIGOAICA_GMAIL_PASS**
 
 ### Sendgrid
+> [more info](https://sendgrid.com/)
+  
 Env Required:
 - apiKey **STRIGOAICA_SENDGRID_KEY**
+
+### MailDev
+> [more info](http://danfarrelly.nyc/MailDev/)
+  
+Env Required:
+- port **STRIGOAICA_MAILDEV_PORT**

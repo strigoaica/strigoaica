@@ -5,5 +5,8 @@ module.exports = {
   },
   sendgrid: {
     apiKey: process.env.STRIGOAICA_SENDGRID_KEY
+  },
+  maildev: {
+    port: process.env.STRIGOAICA_MAILDEV_PORT
   }
 }

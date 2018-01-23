@@ -5,14 +5,17 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "start:dev": "nodemon server.js"
+    "start:dev": "nodemon server.js",
+    "standard": "standard"
   },
   "author": "Stefanos Chrs <stefanoschrs@hotmail.com>",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "case": "github:ianstormtaylor/case",
     "express": "^4.16.2",
-    "nodemailer": "^4.4.1"
+    "nodemailer": "^4.4.1",
+    "nodemailer-sendgrid": "^1.0.2"
   },
   "devDependencies": {
     "standard": "^10.0.3"

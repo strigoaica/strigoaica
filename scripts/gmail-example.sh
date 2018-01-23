@@ -12,7 +12,8 @@ curl \
     "from": "strigoaica@gmail.com",
     "to": "john.smith@gmail.com,jane.smith@gmail.com",
     "payload": {
-      "answer": 42
+      "answer": 42,
+      "longAnswer": "0011010000110010"
     }
   }
 }

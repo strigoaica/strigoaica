@@ -1,10 +1,11 @@
 'use strict'
 
 const fs = require('fs')
+const path = require('path')
+
 const nodemailer = require('nodemailer')
 
-const extractor = require('../lib/utils/extractor')
-const embeddor = require('../lib/utils/embeddor')
+const htmlProcessor = require(path.join(__dirname, '../lib/utils/html-processor'))
 
 class Gmail {
   constructor (options) {
@@ -33,14 +34,20 @@ class Gmail {
     console.log('[gmail]', templateId, data)
 
     return new Promise((resolve, reject) => {
-      const unprocessedTemplate = fs.readFileSync(`${this.templatesPath}/${templateId}.html`, {encoding:'utf-8'})
-      const { templateWithoutParameters, subject } = extractor(unprocessedTemplate, ['subject'])
-      const template = embeddor(templateWithoutParameters, data.payload)
+      const rawTemplate = fs.readFileSync(`${this.templatesPath}/${templateId}.html`, {
+        encoding: 'utf-8'
+      })
+      const { template, meta } = htmlProcessor(rawTemplate, data.payload)
+
+      if (process.env.NODE_ENV !== 'production') {
+        console.log({ from: data.from, to: data.to, subject: meta.subject, html: template })
+        return Promise.resolve()
+      }
 
       this.smtpTransport.sendMail({
         from: data.from,
         to: data.to,
-        subject: subject,
+        subject: meta.subject,
         html: template
       }, (error, result) => {
         if (error) {
