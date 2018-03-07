@@ -1,11 +1,12 @@
+const path = require('path')
+
 const express = require('express')
 const bodyParser = require('body-parser')
-const path = require('path')
 
 const config = require(path.join(__dirname, 'config/config'))
 const Strigoaica = require(path.join(__dirname, 'lib/strigoaica'))
 
-const port = process.env.PORT || 12987
+const port = config.port
 
 const app = express()
 
@@ -33,34 +34,12 @@ app.post('/send', (req, res) => {
 app.listen(port, () => {
   console.log(`Strigoaica listening on :${port}`)
 
-  let strategies = [
-    {
-      type: 'gmail',
-      options: {
-        auth: {
-          user: config.gmail.user,
-          pass: config.gmail.pass
-        }
-      }
-    }
-    // TODO: Generate dynamically from config file if needed
-    // {
-    //   type: 'sendgrid',
-    //   options: {
-    //     auth: {
-    //       apiKey: config.sendgrid.apiKey
-    //     }
-    //   }
-    // },
-    // {
-    //   type: 'maildev',
-    //   options: {
-    //     port: config.maildev.port
-    //   }
-    // }
-  ]
+  let strategies = config.supportedStrategies
+    .filter((type) => config[type])
+    .map((type) => ({ type, options: config[type] }))
+
   let options = {
-    templatesPath: path.join(__dirname, 'templates')
+    templatesPath: config.templatesPath
   }
 
   strigoaica = new Strigoaica(strategies, options)

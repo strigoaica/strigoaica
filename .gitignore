@@ -1,7 +1,13 @@
 node_modules
 
-utils/gmail/templates/*
-!utils/gmail/templates/example.js
+strigoaica.yml
+
+# TODO: Find why !templates/*/example is not working
+templates/*/*
+!templates/facebook/example.*
+!templates/gmail/example.*
+!templates/maildev/example.*
+!templates/sendgrid/example.*
 
 # Jetbrains
 .idea/**/workspace.xml
