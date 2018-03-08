@@ -5,7 +5,7 @@ const path = require('path')
 
 const nodemailer = require('nodemailer')
 
-const htmlProcessor = require(path.join(__dirname, '../lib/utils/html-processor'))
+const htmlProcessor = require(path.join(__dirname, '..', 'lib/utils/html-processor'))
 
 class Gmail {
   constructor (options) {

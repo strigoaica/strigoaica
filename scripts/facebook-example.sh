@@ -8,12 +8,11 @@ curl \
   -d @- << EOF
 {
   "templateId": "example",
+  "strategies": "facebook",
   "data": {
-    "from": "strigoaica@gmail.com",
-    "to": "john.smith@gmail.com,jane.smith@gmail.com",
+    "to": "666",
     "payload": {
-      "answer": 42,
-      "longAnswer": "0011010000110010"
+      "name": "john.smith"
     }
   }
 }

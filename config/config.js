@@ -16,7 +16,7 @@ try {
 
 let config = {
   supportedStrategies: ['facebook', 'gmail', 'sendgrid', 'maildev'],
-  port: extConfig.port || 12987,
+  port: extConfig.port || 1337,
   templatesPath: extConfig.templatesPath || path.join(__dirname, '..', 'templates')
 }
 

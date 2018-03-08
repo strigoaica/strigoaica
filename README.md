@@ -5,14 +5,21 @@
 ### Usage 
 Method: **POST**   
 Path: **/send**   
-Body: **{ "templateId": "x", "data": { } }** 
+Body: 
+```
+{  
+  "templateId": String,
+  "data": Object,
+  ?"strategies": String | Array<String>
+}
+``` 
 
 ### Strategies
-- [x] Gmail
-- [x] Sengrid
-- [x] MailDev (email previewing)
+- [x] Messenger
+- [x] Gmail (Pending refactoring) 
+- [x] Sengrid (Pending refactoring)
+- [x] MailDev (Pending refactoring)
 - [ ] email
-- [ ] Messenger
 - [ ] GCM (Google Cloud Messaging)
 - [ ] APN (Apple Push Notification)
 
@@ -20,17 +27,23 @@ Body: **{ "templateId": "x", "data": { } }**
 > [more info](https://support.google.com/accounts/answer/6010255)
 
 Env Required:
-- Username **STRIGOAICA_GMAIL_USER**
-- Password **STRIGOAICA_GMAIL_PASS**
+- Username **gmail.auth.user**
+- Password **gmail.auth.pass**
 
 ### Sendgrid
 > [more info](https://sendgrid.com/)
   
 Env Required:
-- apiKey **STRIGOAICA_SENDGRID_KEY**
+- API Key **sendgrid.apiKey**
 
 ### MailDev
 > [more info](http://danfarrelly.nyc/MailDev/)
   
 Env Required:
-- port **STRIGOAICA_MAILDEV_PORT**
+- Port **maildev.port**
+
+### Messenger
+> [more info](https://developers.facebook.com/docs/messenger-platform/reference/send-api/)
+  
+Env Required:
+- Page Access Token **facebook.pageAccessToken**

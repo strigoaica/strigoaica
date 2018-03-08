@@ -1,14 +1,15 @@
 'use strict'
 
 const fs = require('fs')
+const path = require('path')
+
 const nodemailer = require('nodemailer')
 
-const extractor = require('../lib/utils/extractor')
-const embeddor = require('../lib/utils/embeddor')
+const extractor = require(path.join(__dirname, '..', 'lib/utils/extractor'))
+const embedder = require(path.join(__dirname, '..', 'lib/utils/embedder'))
 
 class MailDev {
   constructor (options) {
-    Object.assign(options, { port: 1025 })
     // TODO: Extend Email class
     this.smtpTransport = nodemailer.createTransport({
       host: options.host || 'localhost',
@@ -32,8 +33,8 @@ class MailDev {
     console.log('[MailDev]', templateId, data)
 
     return new Promise((resolve, reject) => {
-      const unprocessedTemplate = fs.readFileSync(`${this.templatesPath}/${templateId}.html`, {encoding:'utf-8'})
-      const { templateWithoutParameters, subject } = extractor(unprocessedTemplate, ['subject'])
+      const unprocessedTemplate = fs.readFileSync(`${this.templatesPath}/${templateId}.html`, {encoding: 'utf-8'})
+      const {templateWithoutParameters, subject} = extractor(unprocessedTemplate, ['subject'])
       const template = embeddor(templateWithoutParameters, data.payload)
 
       this.smtpTransport.sendMail({
