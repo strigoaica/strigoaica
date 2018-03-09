@@ -71,8 +71,8 @@ function sendHelper (accessToken, recipient, message) {
     })
 
     req.on('error', (error) => reject(error))
-    logger.debug(JSON.stringify(body))
-    req.write(JSON.stringify(body))
+    logger.debug(JSON.stringify(body).replace(/\\\\n/g, '\\n'))
+    req.write(JSON.stringify(body).replace(/\\\\n/g, '\\n'))
     req.end()
   })
 }
