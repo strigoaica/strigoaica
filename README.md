@@ -1,8 +1,12 @@
-![Strigoaica](https://image.ibb.co/h0Uz4G/witch_on_a_broomstick_480x480.jpg)
+<p align="center">
+	<img src="https://image.ibb.co/h0Uz4G/witch_on_a_broomstick_480x480.jpg"/>
+</p>
 
-# Strigoaică
+# Strigoaică [![Build Status](https://img.shields.io/travis/stefanoschrs/strigoaica/master.svg?style=flat-square)](https://travis-ci.org/stefanoschrs/strigoaica) [![License](https://img.shields.io/github/license/stefanoschrs/strigoaica.svg?style=flat-square)]()
 
-### Usage 
+> *Full documentation can be found at the Strigoaică's [Wiki Page](https://github.com/stefanoschrs/strigoaica/wiki)*
+
+### Usage
 Method: **POST**   
 Path: **/send**   
 Body: 
@@ -14,36 +18,3 @@ Body:
 }
 ``` 
 
-### Strategies
-- [x] Messenger
-- [x] Gmail (Pending refactoring) 
-- [x] Sengrid (Pending refactoring)
-- [x] MailDev (Pending refactoring)
-- [ ] email
-- [ ] GCM (Google Cloud Messaging)
-- [ ] APN (Apple Push Notification)
-
-### Gmail
-> [more info](https://support.google.com/accounts/answer/6010255)
-
-Env Required:
-- Username **gmail.auth.user**
-- Password **gmail.auth.pass**
-
-### Sendgrid
-> [more info](https://sendgrid.com/)
-  
-Env Required:
-- API Key **sendgrid.apiKey**
-
-### MailDev
-> [more info](http://danfarrelly.nyc/MailDev/)
-  
-Env Required:
-- Port **maildev.port**
-
-### Messenger
-> [more info](https://developers.facebook.com/docs/messenger-platform/reference/send-api/)
-  
-Env Required:
-- Page Access Token **facebook.pageAccessToken**

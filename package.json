@@ -4,10 +4,10 @@
   "description": "Generic notifier",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "start:dev": "nodemon server.js",
-    "standard": "standard",
-    "test": "NODE_ENV=test jest"
+    "start": "NODE_ENV=production node server.js",
+    "start:dev": "NODE_ENV=development nodemon server.js",
+    "test": "NODE_ENV=test jest",
+    "standard": "standard"
   },
   "author": "Stefanos Chrs <stefanoschrs@hotmail.com>",
   "license": "MIT",

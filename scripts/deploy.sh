@@ -2,8 +2,6 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-pushd .
-
 cd ${DIR}/..
 
 path="${STRIGOAICA_REMOTE_PATH}"
@@ -26,4 +24,20 @@ rsync \
     strigoaica.yml \
     ${user}@${host}:${path}/
 
-popd
+while [ -n "$1" ]; do
+    case "$1" in
+        -t)
+            shift
+            if [ ! -d "$1" ]; then
+                echo "Wrong template path"
+                exit 1
+            fi
+            templatePath="${1%/}/*"
+            rsync \
+                -arvP \
+                ${templatePath} \
+                ${user}@${host}:${path}/templates/
+            ;;
+    esac
+    shift
+done
