@@ -3,13 +3,15 @@ const path = require('path')
 
 const yaml = require('js-yaml')
 
-let extConfig
+const configPath = process.env.CONFIG_PATH || path.join(__dirname, '..', 'strigoaica.yml')
+
+let extConfig = {}
 
 try {
-  extConfig = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '..', 'strigoaica.yml'), 'utf8'))
+  extConfig = yaml.safeLoad(fs.readFileSync(configPath, 'utf8'))
 } catch (error) {
-  console.log(error)
   if (error.code !== 'ENOENT') {
+    console.error(error)
     process.exit(1)
   }
 }
