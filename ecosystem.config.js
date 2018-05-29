@@ -3,7 +3,9 @@ module.exports = {
     {
       name: 'strigoaica-server',
       script: 'server.js',
-      env: {},
+      env: {
+        NODE_ENV: 'development'
+      },
       env_production: {
         NODE_ENV: 'production'
       }

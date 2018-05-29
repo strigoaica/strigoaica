@@ -8,6 +8,7 @@ curl \
   -d @- << EOF
 {
   "templateId": "example",
+  "strategies": "gmail",
   "data": {
     "from": "strigoaica@gmail.com",
     "to": "john.smith@gmail.com,jane.smith@gmail.com",

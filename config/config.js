@@ -1,54 +1,41 @@
-const fs = require('fs')
-const path = require('path')
-
-const yaml = require('js-yaml')
-
-const configPath = process.env.CONFIG_PATH || path.join(__dirname, '..', 'strigoaica.yml')
-
-let extConfig = {}
-
-try {
-  extConfig = yaml.safeLoad(fs.readFileSync(configPath, 'utf8'))
-} catch (error) {
-  if (error.code !== 'ENOENT') {
-    console.error(error)
-    process.exit(1)
-  }
+'use strict';
+Object.defineProperty(exports, "__esModule", { value: true });
+var fs = require("fs");
+var path = require("path");
+var yaml = require("js-yaml");
+var config;
+exports.config = config;
+if (!config) {
+    loadConfigFile();
 }
-
-let config = {
-  supportedStrategies: ['facebook', 'gmail', 'sendgrid', 'maildev'],
-  port: extConfig.port || 1337,
-  templatesPath: extConfig.templatesPath || path.join(__dirname, '..', 'templates')
-}
-
-if (extConfig.gmail) {
-  config.gmail = {
-    auth: {
-      user: extConfig.gmail.user,
-      pass: extConfig.gmail.pass
+function loadConfigFile() {
+    var configPath = process.env.CONFIG_PATH || path.join(__dirname, '..', 'strigoaica.yml');
+    var extConfig = {};
+    /**
+     * Add Defaults
+     */
+    exports.config = config = {
+        port: 1337,
+        templatesPath: path.join(__dirname, '..', 'templates'),
+        strategies: {}
+    };
+    /**
+     * Load External Config File
+     */
+    try {
+        extConfig = yaml.safeLoad(fs.readFileSync(configPath, 'utf8'));
     }
-  }
-}
-
-if (extConfig.sendgrid) {
-  config.sendgrid = {
-    auth: {
-      apiKey: extConfig.sendgrid.apiKey
+    catch (error) {
+        console.error(error);
+        process.exit(1);
     }
-  }
+    /**
+     * Populate/ Overwrite in-memory config
+     */
+    exports.config = config = Object.assign(config, extConfig);
+    if (!extConfig.strategies) {
+        console.error(new Error('At least 1 strategy must be provided'));
+        process.exit(1);
+    }
 }
-
-if (extConfig.maildev) {
-  config.maildev = {
-    port: extConfig.maildev.port
-  }
-}
-
-if (extConfig.facebook) {
-  config.facebook = {
-    pageAccessToken: extConfig.facebook.pageAccessToken
-  }
-}
-
-module.exports = config
+//# sourceMappingURL=config.js.map

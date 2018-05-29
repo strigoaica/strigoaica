@@ -10,39 +10,66 @@ path="${STRIGOAICA_REMOTE_PATH}"
 user="${STRIGOAICA_REMOTE_USER}"
 host="${STRIGOAICA_REMOTE_HOST}"
 
-### Backup
-tarName="backup.`date +%s`.tgz"
-ssh \
-    ${user}@${host} \
-    "tar --exclude='node_modules' --exclude='backup.*' -zcvf /tmp/${tarName} -C `dirname ${path}` `basename ${path}` && mv /tmp/${tarName} ${path}/"
+if [[ "$user" == "" ]]; then
+  "Error: Missing env variables"
+  exit 1
+fi
 
-### File Transfer
-rsync \
-    -arvP \
-    config \
-    lib \
-    node_modules \
-    strategies \
-    templates \
-    app.js \
-    ecosystem.config.js \
-    server.js \
-    ${user}@${host}:${path}/
+function uploadFiles() {
+    ### Backup
+    tarName="backup.`date +%s`.tgz"
+    ssh \
+        ${user}@${host} \
+        "tar --exclude='node_modules' --exclude='backup.*' -zcvf /tmp/${tarName} -C `dirname ${path}` `basename ${path}` && mv /tmp/${tarName} ${path}/"
+
+    ### File Transfer
+    rsync \
+        -arvPR \
+        --exclude '*.ts' \
+        --exclude '*.js.map' \
+        --exclude 'tsconfig.json' \
+        --exclude 'tslint.json' \
+        \
+        --exclude '.git/' \
+        --exclude '.gitignore' \
+        --exclude '.travis.yml' \
+        --exclude '.idea/' \
+        \
+        --exclude 'node_modules/' \
+        \
+        --exclude '*.test.js' \
+        --exclude 'test/' \
+        --exclude 'coverage/' \
+        \
+        --exclude 'strigoaica.yml' \
+        \
+        . \
+        ${user}@${host}:${path}/
+}
+
+function uploadTemplates() {
+    rsync \
+        -arvP \
+        --exclude '.git' \
+        ${1} \
+        ${user}@${host}:${path}/templates/
+}
 
 ### Deploy options
 while [ -n "$1" ]; do
     case "$1" in
-        -t)
+        --files)
+            uploadFiles
+            ;;
+        --templates)
             shift
+
             if [ ! -d "$1" ]; then
                 echo "Wrong template path"
                 exit 1
             fi
-            templatePath="${1%/}/*"
-            rsync \
-                -arvP \
-                ${templatePath} \
-                ${user}@${host}:${path}/templates/
+
+            uploadTemplates "${1%/}/*"
             ;;
     esac
     shift

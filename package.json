@@ -1,31 +1,37 @@
 {
   "name": "strigoaica",
-  "version": "0.0.1",
   "description": "Generic notifier",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Stefanos Chrs <chrsstefanoschrs@gmail.com>",
   "main": "server.js",
   "scripts": {
     "start": "NODE_ENV=production node server.js",
     "start:dev": "NODE_ENV=development nodemon server.js",
-    "test": "NODE_ENV=test CONFIG_PATH=strigoaica.example.yml jest",
-    "standard": "standard"
+    "test": "NODE_ENV=test CONFIG_PATH=strigoaica.example.yml jest --expand --onlyChanged",
+    "test:full": "NODE_ENV=test CONFIG_PATH=strigoaica.example.yml jest --coverage"
   },
-  "author": "Stefanos Chrs <stefanoschrs@hotmail.com>",
-  "license": "MIT",
   "dependencies": {
     "agathias": "0.0.4",
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.18.3",
     "case": "github:ianstormtaylor/case",
-    "express": "^4.16.2",
+    "express": "^4.16.3",
     "js-yaml": "^3.11.0",
-    "nodemailer": "^4.4.1",
-    "nodemailer-sendgrid": "^1.0.2"
+    "nodemailer": "^4.6.5",
+    "nodemailer-sendgrid": "^1.0.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "jest": "^22.4.2",
-    "standard": "^10.0.3",
-    "superagent": "^3.8.2",
-    "supertest": "^3.0.0"
+    "babel-cli": "^7.0.0-beta.3",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.0.1",
+    "jest-environment-node": "^23.0.1",
+    "jest-extended": "^0.7.2",
+    "standard": "^11.0.1",
+    "superagent": "^4.0.0-alpha.1",
+    "supertest": "^3.1.0"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "jest-extended",
+    "testEnvironment": "./test/strigoaica-environment"
   }
 }
