@@ -5,7 +5,7 @@
 # Strigoaică
 [![GitHub license](https://img.shields.io/github/license/stefanoschrs/strigoaica.svg)](https://github.com/stefanoschrs/strigoaica/blob/master/LICENSE.md) [![Build Status](https://travis-ci.org/stefanoschrs/strigoaica.svg?branch=master)](https://travis-ci.org/stefanoschrs/strigoaica) [![GitHub release](https://img.shields.io/github/release/stefanoschrs/strigoaica.svg)](https://github.com/stefanoschrs/strigoaica/releases)
 
-**Project agnostic service for template based notification devivery**
+**Project agnostic service for template based notification delivery**
 > *Full documentation can be found at the Strigoaică's [Wiki Page](https://github.com/stefanoschrs/strigoaica/wiki)*
 
 #### Available strategies
