@@ -51,6 +51,8 @@ function uploadTemplates() {
     rsync \
         -arvP \
         --exclude '.git' \
+        --exclude '.gitignore' \
+        --exclude-from='.gitignore' \
         ${1} \
         ${user}@${host}:${path}/templates/
 }
