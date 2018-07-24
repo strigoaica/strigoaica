@@ -3,6 +3,6 @@ templatePath: "./templates"
 strategies:
   facebook:
     pageAccessToken: "pageAccessToken"
-  gmail:
-      user: "user"
-      pass: "pass"
+#  gmail:
+#      user: "user"
+#      pass: "pass"

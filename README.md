@@ -12,10 +12,14 @@
 ```
 ## Clone repo
 git clone git@github.com:stefanoschrs/strigoaica.git && cd $(basename $_ .git)
+## Install node modules
+npm i
+## Copy configuration
+cp strigoaica.example.yml strigoaica.yml
 ## Add a strategy
 npm i strigoaica-facebook
 ## Run
-NODE_ENV=production node server.js
+node server.js
 ```
 
 #### Available strategies
