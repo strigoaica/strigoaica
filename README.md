@@ -8,9 +8,19 @@
 **Project agnostic service for template based notification delivery**
 > *Full documentation can be found at the Strigoaică's [Wiki Page](https://github.com/stefanoschrs/strigoaica/wiki)*
 
+#### Quick Install
+```
+## Clone repo
+git clone git@github.com:stefanoschrs/strigoaica.git && cd $(basename $_ .git)
+## Add a strategy
+npm i strigoaica-facebook
+## Run
+NODE_ENV=production node server.js
+```
+
 #### Available strategies
-- Facebook
-- Gmail
+- [Facebook](https://github.com/stefanoschrs/strigoaica-facebook)
+- -Gmail-
 
 #### General Usage
 Method: **POST**   
