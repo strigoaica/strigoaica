@@ -7,22 +7,12 @@ import * as yaml from 'js-yaml'
 
 interface Config {
   port: number,
-  templatesPath: string
-  strategies: {
-    facebook: {
-      pageAccessToken: string
-    },
-    gmail: {
-      user: string,
-      pass: string
-    },
-    sendGrid: {
-      apiKey: string
-    },
-    maildev: {
-      port: number
-    }
-  },
+  templatesPath: string,
+  strategies: Strategy[]
+}
+
+interface Strategy {
+  [key: string]: string
 }
 
 let config: Config
@@ -60,10 +50,16 @@ function loadConfigFile () {
    */
   config = Object.assign(config, extConfig)
 
-  if (!extConfig.strategies) {
+  if (!config.strategies) {
     console.error(new Error('At least 1 strategy must be provided'))
     process.exit(1)
   }
+
+  Object.keys(config.strategies).forEach((strategy) => {
+    if (require.resolve(`strigoaica-${strategy}`)) {
+      // TODO: Validate config of each strategy
+    }
+  })
 }
 
 export {

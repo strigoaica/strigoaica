@@ -18,40 +18,15 @@ class Strigoaica {
         templatesPath: `${this.templatesPath}/${s.type}`
       }
 
-      if (s.type === 'gmail') {
-        const Gmail = require('../strategies/gmail')
-        return new Gmail(Object.assign(strategyOptions, {
-          auth: {
-            user: s.options.user,
-            pass: s.options.pass
-          }
-        }))
+      let strategy
+
+      try {
+        strategy = require(`strigoaica-${s.type}`)
+      } catch (e) {
+        throw new Error(`Strategy ${s.type} not recognized`)
       }
 
-      if (s.type === 'facebook') {
-        const Facebook = require('../strategies/facebook')
-        return new Facebook(Object.assign(strategyOptions, {
-          pageAccessToken: s.options.pageAccessToken
-        }))
-      }
-
-      // if (s.type === 'sendgrid') {
-      //   const Sendgrid = require(path.join(__dirname, '../strategies/sendgrid'))
-      //   return new Sendgrid(Object.assign({
-      //     auth: {
-      //       apiKey: s.options.auth.apiKey
-      //     }
-      //   }, strategyOptions))
-      // }
-
-      // if (s.type === 'maildev') {
-      //   const MailDev = require(path.join(__dirname, '../strategies/maildev'))
-      //   return new MailDev(Object.assign({
-      //     port: s.options.port
-      //   }, strategyOptions))
-      // }this.type = 'gmail'
-
-      throw new Error(`Strategy ${s.type} not recognized`)
+      return new strategy(Object.assign(strategyOptions, s.options))
     })
   }
 

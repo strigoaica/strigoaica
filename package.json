@@ -1,7 +1,7 @@
 {
   "name": "strigoaica",
   "description": "Generic notifier",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "author": "Stefanos Chrs <chrsstefanoschrs@gmail.com>",
   "main": "server.js",
@@ -14,13 +14,11 @@
   "dependencies": {
     "agathias": "0.0.4",
     "body-parser": "^1.18.3",
-    "case": "github:ianstormtaylor/case",
     "express": "^4.16.3",
-    "js-yaml": "^3.11.0",
-    "nodemailer": "^4.6.5",
-    "nodemailer-sendgrid": "^1.0.3"
+    "js-yaml": "^3.11.0"
   },
   "devDependencies": {
+    "@types/node": "^10.5.2",
     "babel-cli": "^7.0.0-beta.3",
     "babel-preset-env": "^1.7.0",
     "jest": "^23.0.1",

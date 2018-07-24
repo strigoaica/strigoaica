@@ -33,9 +33,14 @@ function loadConfigFile() {
      * Populate/ Overwrite in-memory config
      */
     exports.config = config = Object.assign(config, extConfig);
-    if (!extConfig.strategies) {
+    if (!config.strategies) {
         console.error(new Error('At least 1 strategy must be provided'));
         process.exit(1);
     }
+    Object.keys(config.strategies).forEach(function (strategy) {
+        if (require.resolve("strigoaica-" + strategy)) {
+            // TODO: Validate config of each strategy
+        }
+    });
 }
 //# sourceMappingURL=config.js.map
