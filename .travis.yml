@@ -1,8 +1,23 @@
 language: node_js
 
 node_js:
-  - "lts/*"
+- lts/*
 
 cache:
   directories:
-    - "node_modules"
+  - node_modules
+
+before_script:
+- npm run setup
+
+script:
+- npm run build
+
+deploy:
+  provider: releases
+  api_key:
+    secure: QawD3JtM5+FL30Q5PtkC3aKeIpnpDPgWhvKBIa2rIQeTNZW4ZH47pUXNV4SG/immR/zUFLvwXIorxOevZerSPqbwKd9fAc77SllFcOsHaNsmmnOOAR57FxrThkUG/4JE4tYJEFfQbzyFbg6wanTuuijJPCPbMOfq+pv0O2TnhemLSnOXzrlP0IvZfYHQSepXhWdHSNJS0VrYvO6avbTZHChoIzacrOSZfXKrU1fERnCFyBDPVUCRbHR7U0hEvICVQTofkGDJopTQOr4OUPYgKo+KxRJR7QnynITO9IsyWjN+te6Z579LdMAJwzdy64RZC1fjvGPAf8vAUKiHyuLOuAzIH+a7rCVHwllIqs4J0Su0+6z3jdeGnnBal2WI8MTMaKgWKEX7mL844x5Jc9n3o7IX2dj7O4l8R1Z7MTOgangAolXb27SNvCosVVfQQLmeorMv1+pz6YIy/dgJQDlfV8MGRz/RY1mBur5gAnqPWTj9ntvKsIMgUTaI2e5azQDyYJvVYSAWFpo+iut12CGZtic1XcsAJCrwD8IlJjbIhU2RzA9K310pHGzu4ytNLb4ftYnd++I3QNt86xE8jSAIS9VHTYYO1PCoqfEAnyrK35K8K5q9P7Zuaj/LZMl+nLFP6x/uDGxFPseeCGtgKUkFlBrTlEhjDiy93s3E7B7spuc=
+  file_glob: true
+  file: dist/
+  on:
+    repo: stefanoschrs/strigoaica
