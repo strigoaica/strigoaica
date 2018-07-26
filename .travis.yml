@@ -12,8 +12,6 @@ before_script:
 
 script:
   - npm run build
-
-after_script:
   - tar -zcvf strigoaica.tgz dist
 
 deploy:
