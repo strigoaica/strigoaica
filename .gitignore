@@ -1,6 +1,14 @@
 node_modules
 
+dist
+
 strigoaica.yml
+
+#
+**/*.map
+**/*.js
+!test/*.js
+!ecosystem.config.js
 
 # TODO: Find why !templates/*/example is not working
 templates/*/*

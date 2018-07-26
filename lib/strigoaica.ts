@@ -2,7 +2,7 @@
 
 import * as Agathias from 'agathias'
 
-import { Strategy } from './strategy'
+import { Strategy } from 'strigoaica-strategy'
 
 const logger = Agathias.getChild('strigoaica')
 
