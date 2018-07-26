@@ -11,7 +11,7 @@
     "test": "NODE_ENV=test CONFIG_PATH=strigoaica.example.yml jest --expand --onlyChanged",
     "test:full": "NODE_ENV=test CONFIG_PATH=strigoaica.example.yml jest --coverage",
     "setup": "npm i",
-    "build": "tsc && cp package.json README.md dist/"
+    "build": "tsc && cp package.json README.md dist/ && mkdir dist/templates"
   },
   "dependencies": {
     "agathias": "0.0.4",

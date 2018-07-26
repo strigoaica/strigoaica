@@ -22,4 +22,5 @@ deploy:
   skip_cleanup: true
   on:
     repo: stefanoschrs/strigoaica
-    branch: decouple
+    branch: master
+    tags: true

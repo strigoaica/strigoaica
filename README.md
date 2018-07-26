@@ -10,16 +10,22 @@
 
 #### Quick Install
 ```
-## Clone repo
-git clone git@github.com:stefanoschrs/strigoaica.git && cd $(basename $_ .git)
+## Download and extract latest release
+wget $(curl -s https://api.github.com/repos/stefanoschrs/strigoaica/releases/latest | grep -oE "https.*strigoaica\.tgz")
+tar -zxvf strigoaica.tgz
+cd dist
 ## Install node modules
 npm i
-## Copy configuration
-cp strigoaica.example.yml strigoaica.yml
-## Add a strategy
+## Get sample configuration (optional)
+wget -O strigoaica.yml https://raw.githubusercontent.com/stefanoschrs/strigoaica/master/strigoaica.example.yml
+## Add a sample strategy (optional)
 npm i strigoaica-facebook
-## Run
+mkdir templates/facebook
+wget -O templates/facebook/example.txt https://raw.githubusercontent.com/stefanoschrs/strigoaica/master/templates/facebook/example.txt
+## Start server
 node server.js
+## Run the example command (optional)
+./node_modules/strigoaica-facebook/scripts/example.sh
 ```
 
 #### Available strategies
