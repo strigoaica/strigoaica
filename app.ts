@@ -43,7 +43,11 @@ function initialize () {
   /**
    * Logging
    */
-  if (process.env.NODE_ENV !== 'test') {
+  if (process.env.NODE_ENV === 'production') {
+    logger.init({
+      consoleLevel: 'info'
+    })
+  } else if (process.env.NODE_ENV !== 'test') {
     logger.init()
   }
 
