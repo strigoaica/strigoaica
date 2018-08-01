@@ -30,7 +30,7 @@ node server.js
 
 #### Available strategies
 - [Facebook](https://github.com/stefanoschrs/strigoaica-facebook)
-- -Gmail-
+- [Gmail](https://github.com/stefanoschrs/strigoaica-google)
 
 #### General Usage
 Method: **POST**   
