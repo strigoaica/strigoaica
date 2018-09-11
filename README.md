@@ -12,38 +12,38 @@
 
 
 #### Quick Install
-- Download and extract latest release
 ```
+### Download and extract latest release
 wget $(curl -s https://api.github.com/repos/stefanoschrs/strigoaica/releases/latest | grep -oE "https.*strigoaica\.tgz")
 tar -zxvf strigoaica.tgz
 cd dist
-```
-- Install node modules
-```
+
+### Install node modules
 npm i
-```
-- Start server
-```
+
+### Start server
 node server.js
 ```
-- Get sample configuration **(optional)**
+**(optional)**
 ```
+### Get sample configuration 
 wget -O strigoaica.yml https://raw.githubusercontent.com/stefanoschrs/strigoaica/master/strigoaica.example.yml
-```
-- Add a sample strategy **(optional)**
-```
-npm i strigoaica-facebook
+
+### Add sample strategies
+npm i strigoaica-facebook strigoaica-gmail
+
+### Download sample template
 mkdir templates/facebook
 wget -O templates/facebook/example.txt https://raw.githubusercontent.com/stefanoschrs/strigoaica/master/templates/facebook/example.txt
-```
-- Run the example command **(optional)**
-```
+
+### Run the example command
 ./node_modules/strigoaica-facebook/scripts/example.sh
 ```
 
 #### Available strategies
 - [Facebook](https://github.com/stefanoschrs/strigoaica-facebook)
-- [Gmail](https://github.com/stefanoschrs/strigoaica-google)
+- [Gmail](https://github.com/stefanoschrs/strigoaica-gmail)
+- [Amazon Simple Email Service (template)](https://github.com/stefanoschrs/strigoaica-ses-template)
 
 #### General Usage
 Method: **POST**   

@@ -5,6 +5,10 @@
   "license": "MIT",
   "author": "Stefanos Chrs <chrsstefanoschrs@gmail.com>",
   "main": "server.js",
+  "repository": {
+    "type" : "git",
+    "url" : "git@github.com:stefanoschrs/strigoaica.git"
+  },
   "scripts": {
     "start": "NODE_ENV=production node server.js",
     "start:dev": "NODE_ENV=development nodemon server.js",

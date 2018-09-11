@@ -9,6 +9,7 @@ cd ${DIR}/..
 path="${STRIGOAICA_REMOTE_PATH}"
 user="${STRIGOAICA_REMOTE_USER}"
 host="${STRIGOAICA_REMOTE_HOST}"
+identity="${STRIGOAICA_REMOTE_IDENTITY}"
 
 if [[ "$user" == "" ]]; then
   "Error: Missing env variables"
@@ -18,43 +19,47 @@ fi
 function uploadFiles() {
     ### Backup
     tarName="backup.`date +%s`.tgz"
-    ssh \
+    if [[ "${identity}" != "" ]]; then
+        identityCmd="-i ${identity}"
+    fi
+    eval "ssh \
+        ${identityCmd} \
         ${user}@${host} \
-        "tar --exclude='node_modules' --exclude='backup.*' -zcvf /tmp/${tarName} -C `dirname ${path}` `basename ${path}` && mv /tmp/${tarName} ${path}/"
+            \"tar \
+                --exclude='node_modules' \
+                --exclude='backup.*' \
+                -zcvf \
+                /tmp/${tarName} \
+                -C `dirname ${path}` `basename ${path}` &&
+                mv /tmp/${tarName} ${path}/\""
 
     ### File Transfer
-    rsync \
-        -arvPR \
-        --exclude '*.ts' \
-        --exclude '*.js.map' \
-        --exclude 'tsconfig.json' \
-        --exclude 'tslint.json' \
-        \
-        --exclude '.git/' \
-        --exclude '.gitignore' \
-        --exclude '.travis.yml' \
-        --exclude '.idea/' \
-        \
-        --exclude 'node_modules/' \
-        \
-        --exclude '*.test.js' \
-        --exclude 'test/' \
-        --exclude 'coverage/' \
-        \
+    if [[ "${identity}" != "" ]]; then
+        identityCmd="-e 'ssh -i ${identity}'"
+    fi
+    eval "rsync \
+        ${identityCmd} \
+        -arvP \
+        --exclude *.test.js \
         --exclude 'strigoaica.yml' \
         \
-        . \
-        ${user}@${host}:${path}/
+        dist/* \
+        package.json \
+        ${user}@${host}:${path}/"
 }
 
 function uploadTemplates() {
-    rsync \
+    if [[ "${identity}" != "" ]]; then
+        identityCmd="-e 'ssh -i ${identity}'"
+    fi
+    eval "rsync \
+        ${identityCmd} \
         -arvP \
         --exclude '.git' \
         --exclude '.gitignore' \
         --exclude-from='.gitignore' \
         ${1} \
-        ${user}@${host}:${path}/templates/
+        ${user}@${host}:${path}/templates/"
 }
 
 ### Deploy options

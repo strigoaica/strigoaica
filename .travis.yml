@@ -24,3 +24,7 @@ deploy:
     repo: stefanoschrs/strigoaica
     branch: master
     tags: true
+
+notifications:
+  email:
+    on_success: never
