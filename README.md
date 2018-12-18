@@ -45,6 +45,9 @@ wget -O templates/facebook/example.txt https://raw.githubusercontent.com/strigoa
 - [Gmail](https://github.com/strigoaica/strigoaica-gmail)
 - [Amazon Simple Email Service (template)](https://github.com/strigoaica/strigoaica-ses-template)
 
+#### Under construction strategies
+- [Firebase Cloud Messaging](https://github.com/strigoaica/strigoaica-fcm)
+
 #### General Usage
 Method: **POST**   
 Path: **/send**   
