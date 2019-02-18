@@ -21,7 +21,7 @@ deploy:
   file: "strigoaica.tgz"
   skip_cleanup: true
   on:
-    repo: stefanoschrs/strigoaica
+    repo: strigoaica/strigoaica
     branch: master
     tags: true
 

@@ -6,3 +6,5 @@ strategies:
   gmail:
       user: "user"
       pass: "pass"
+  sendgrid:
+    apiKey: "apiKey"

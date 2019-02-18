@@ -3,11 +3,11 @@
   "description": "Generic notifier",
   "version": "2.0.0",
   "license": "MIT",
-  "author": "Stefanos Chrs <chrsstefanoschrs@gmail.com>",
+  "author": "Stefanos Chrs <root@stefanoschrs.com>",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:stefanoschrs/strigoaica.git"
+    "url": "git@github.com:strigoaica/strigoaica.git"
   },
   "scripts": {
     "start": "NODE_ENV=production node server.js",

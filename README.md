@@ -44,6 +44,7 @@ wget -O templates/facebook/example.txt https://raw.githubusercontent.com/strigoa
 - [Facebook](https://github.com/strigoaica/strigoaica-facebook)
 - [Gmail](https://github.com/strigoaica/strigoaica-gmail)
 - [Amazon Simple Email Service (template)](https://github.com/strigoaica/strigoaica-ses-template)
+- [SendGrid](https://github.com/strigoaica/strigoaica-sendgrid)
 
 #### Under construction strategies
 - [Firebase Cloud Messaging](https://github.com/strigoaica/strigoaica-fcm)

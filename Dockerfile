@@ -12,6 +12,7 @@ RUN npm i --production
 # RUN npm i --no-save strigoaica-facebook
 # RUN npm i --no-save strigoaica-gmail
 # RUN npm i --no-save strigoaica-ses-template
+# RUN npm i --no-save strigoaica-sendgrid
 
 WORKDIR /usr/src/app
 
